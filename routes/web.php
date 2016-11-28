@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Registro das Resourceful Routes
+
+Route::resource('carros', "CarrosController");
+Route::resource('atendimentos', 'AtendimentosController');
+
