@@ -8,7 +8,7 @@ function formatarData(data)
 
 	 var elementos = data.split(" ")[0].split("-");
 
-	 return elementos[2] + "/" + elementos[1] + "/ " + elementos[0][2]+elementos[0][3];
+	 return elementos[2] + "/" + elementos[1] + "/" + elementos[0][2]+elementos[0][3];
 }
 
 // Criar o bloco de resultados da busca da página inicial

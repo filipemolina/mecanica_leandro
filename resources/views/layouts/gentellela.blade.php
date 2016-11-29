@@ -233,7 +233,7 @@
                           <a href="javascript:void(0)">Serviços Prestados</a>
                         </h2>
                         <div class="byline">
-                          <span>{{ criado }}</span> by <a>Jane Smith</a>
+                          Liberado em <span>{{ criado }}</span> por <a>João</a>
                         </div>
                         <p class="excerpt">{{ descricao }}</p>
                         <p><strong>Valor:</strong> R$ {{ valor }}</p>
