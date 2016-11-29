@@ -9,3 +9,12 @@
     margin-top: -60px;
     display: none;
 }
+
+/************************** Mensagem de nenhum carro encontrado*/
+
+div.vazio
+{
+	text-align: center;
+	margin-top: 150px;
+	display: none;
+}

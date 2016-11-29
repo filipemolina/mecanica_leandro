@@ -2,6 +2,14 @@
 
 @section('conteudo')
 
+	<div class="row vazio">
+			
+		<i aria-hidden="true" class="fa fa-folder-open-o fa-5x" style="font-size: 17em"></i>
+
+		<h3>Nenhum carro encontrado!</h3>
+
+	</div>	
+
 	<div class="row resultados">
 
 		{{-- *********************** Início do Loop --}}

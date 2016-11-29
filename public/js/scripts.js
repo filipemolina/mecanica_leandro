@@ -1,5 +1,16 @@
 ////////////////////////////////////////// Funções Gerais
 
+// Formatar data vinda do banco de dados
+
+function formatarData(data)
+{
+	// Elementos = Array com Ano, Mes, Dia
+
+	 var elementos = data.split(" ")[0].split("-");
+
+	 return elementos[2] + "/" + elementos[1] + "/ " + elementos[0][2]+elementos[0][3];
+}
+
 // Criar o bloco de resultados da busca da página inicial
 
 function criarBloco(carro)
@@ -13,6 +24,17 @@ function criarBloco(carro)
 
 	var compilar = Handlebars.compile(template);
 
+	// Formatar a data de cada atendimento vinda do banco de dados
+
+	for (var i = carro.atendimentos.length - 1; i >= 0; i--) {
+
+		// Criar a propriedade "criado", apenas para exibição, com o valor retornado
+		// da função formatarData()
+		
+		carro.atendimentos[i].criado = formatarData(carro.atendimentos[i].created_at);
+
+	}
+
 	// Jogar os dados no template
 
 	var html = compilar(carro);
@@ -21,6 +43,8 @@ function criarBloco(carro)
 
 	return html;
 }
+
+///////////////////////////////////////////////////////// Funções executadas após o carregamento da página
 
 $(function(){
 
@@ -53,22 +77,39 @@ $(function(){
 
 			var resultado = JSON.parse(data);
 
-			// Apagar a imagem de Loading
+			// Apagar a imagem de Loading e a pasta vazia
 
-			$("img#img-loading").css('display', 'none');
+			$("img#img-loading, div.vazio").css('display', 'none');
 
-			// Iterar pelos resultados e montar os blocos
+			// Testar se houve algum resultado para a pesquisa
 
-			for (var i = resultado.length - 1; i >= 0; i--) {
-				
-				// Chamar a função que cria o bloco para cada resultado
+			if(resultado.length > 0)
+			{
+				// Iterar pelos resultados e montar os blocos
 
-				$("div.row.resultados").append(criarBloco(resultado[i]));
+				for (var i = resultado.length - 1; i >= 0; i--) {
+					
+					// Chamar a função que cria o bloco para cada resultado
 
+					$("div.row.resultados").append(criarBloco(resultado[i]));
+
+				}
+			}
+			else
+			{
+				$("div.vazio").css('display', 'block');
 			}
 
 		});
 
+	});
+
+	//////////////// Ativar a busca ao apertar ENTER no input de busca
+
+	$("input#busca").keyup(function(event){
+	    if(event.keyCode == 13){
+	        $("button#btn_busca").click();
+	    }
 	});
 
 });

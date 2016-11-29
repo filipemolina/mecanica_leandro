@@ -11,7 +11,7 @@ class BuscaController extends Controller
     public function index(Request $request)
     {
 
-    	$termo = $request->input('termo');
+    	$termo = strtoupper($request->input('termo'));
 
     	$carros = \App\Carro::where('placa', '=', $termo)->with('atendimentos')->get();
 
@@ -21,9 +21,6 @@ class BuscaController extends Controller
     	}
 
     	return $carros->toJson();
-
-    	// echo "<pre>";
-    	// print_r(json_encode($carros));
 
     }
 }

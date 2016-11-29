@@ -174,7 +174,7 @@
 
               <div class="nav navbar-nav navbar-left top_search" style="margin-top: 10px;">
                 <div class="input-group">
-                  <input id="busca" class="form-control" placeholder="Busca por placa" type="text">
+                  <input id="busca" class="form-control" placeholder="Busca por placa" type="text" style="text-transform: uppercase">
                   {{ csrf_field() }}
                   <span class="input-group-btn">
                     <button id="btn_busca" class="btn btn-default" type="button">Buscar!</button>
@@ -213,6 +213,8 @@
     {{-- Templates HandleBars --}}
 
     <script id="resultado-busca" type="text/x-handlebars-template">
+
+      {{-- Essa tag permite que as chaves sejam usadas pelo Handlebars e não pelo Blade --}}
 
       @verbatim
         
@@ -299,6 +301,8 @@
     <script src="{{ asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
     <!-- iCheck -->
     <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
+    {{-- Input Mask --}}
+    <script src="{{ asset('vendors/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('js/custom.min.js') }}"></script>
