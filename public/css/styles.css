@@ -1,0 +1,11 @@
+/*********************** Imagem de Loading */
+
+#img-loading 
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -60px;
+    margin-top: -60px;
+    display: none;
+}
