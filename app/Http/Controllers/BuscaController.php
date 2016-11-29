@@ -13,14 +13,40 @@ class BuscaController extends Controller
 
     	$termo = strtoupper($request->input('termo'));
 
-    	$carros = \App\Carro::where('placa', '=', $termo)->with('atendimentos')->get();
+    	// Testar se o termo de busca veio vazio, caso afirmativo
+    	// retornar uma lista de todos os últimos carros
 
-    	foreach($carros as $carro)
+    	if($termo != "")
     	{
-    		$carro->criado = $carro->created_at->format('d/n/y');
-    	}
 
-    	return $carros->toJson();
+    		// Obter os carros, com os atendimentos ordenados por ordem decrescente de criação
+
+    		$carros = \App\Carro::where('placa', '=', $termo)->with(['atendimentos' => function($query){
+				
+				$query->orderBy('id', 'desc');
+
+    		}])->get();
+
+	    	foreach($carros as $carro)
+	    	{
+	    		$carro->criado = $carro->created_at->format('d/n/y');
+	    	}
+
+	    	return $carros->toJson();
+    	}
+    	else
+    	{
+
+    		// Obter os carros, com os atendimentos ordenados por ordem decrescente de criação
+
+    		$carros = \App\Carro::orderBy('id', 'desc')->with(['atendimentos' => function($query){
+				
+				$query->orderBy('id', 'desc');
+
+    		}])->take(10)->get();
+
+    		return $carros->toJson();
+    	}
 
     }
 }
