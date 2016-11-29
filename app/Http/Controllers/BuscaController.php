@@ -23,7 +23,7 @@ class BuscaController extends Controller
 
     		$carros = \App\Carro::where('placa', '=', $termo)->with(['atendimentos' => function($query){
 				
-				$query->orderBy('id', 'desc');
+				$query->orderBy('id', 'desc')->take(5);
 
     		}])->get();
 
@@ -41,7 +41,7 @@ class BuscaController extends Controller
 
     		$carros = \App\Carro::orderBy('id', 'desc')->with(['atendimentos' => function($query){
 				
-				$query->orderBy('id', 'desc');
+				$query->orderBy('id', 'desc')->take(5);
 
     		}])->take(10)->get();
 

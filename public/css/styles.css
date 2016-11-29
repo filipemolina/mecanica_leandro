@@ -12,9 +12,41 @@
 
 /************************** Mensagem de nenhum carro encontrado*/
 
-div.vazio
+div.vazio,
+div.inicial
 {
 	text-align: center;
 	margin-top: 150px;
 	display: none;
 }
+
+div.inicial { display: block; }
+
+/**************************** Ajustes no menu lateral */
+
+.profile_info 
+{
+    padding: 25px 10px 10px;
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/***************************** Linha de Botões de cada resultado da busca principal*/
+
+.x_panel .content.botoes
+{
+	margin-top: 130px;
+}
+
+/****************************** Menu Superior*/
+
+.nav.btn-novo-carro
+{
+	margin-top: 15px;
+	margin-right: 10px;
+	float: right;
+}
+
+.toggle { padding-top: 0; }

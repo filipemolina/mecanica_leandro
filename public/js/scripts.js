@@ -53,6 +53,10 @@ $(function(){
 
 	$("button#btn_busca").click(function(){
 
+		// Apagar a div de mensagem inicial
+
+		$("div.inicial").css('display', 'none');
+
 		// Obter o termo de busca
 
 		var termo = $("input#busca").val();
@@ -73,9 +77,13 @@ $(function(){
 
 		$.post('/busca', { termo : termo, _token : token }, function(data){
 
+			console.log("Chamou");
+
 			// Converter o resultado em um objeto JSON
 
 			var resultado = JSON.parse(data);
+
+			console.log(resultado);
 
 			// Apagar a imagem de Loading e a pasta vazia
 
