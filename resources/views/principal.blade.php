@@ -1,5 +1,47 @@
 @extends('layouts.gentellela')
 
+@section('title')
+
+Home
+
+@endsection
+
+{{-- Header H1 da Página --}}
+
+@section('header-h1')
+
+Início
+
+@endsection
+
+{{-- Menu Superior --}}
+
+@section('menu-superior')
+
+{{-- Busca --}}
+
+<div class="nav navbar-nav navbar-left top_search col-md-8" style="margin-top: 15px;">
+	<div class="input-group">
+		<input id="busca" class="form-control" placeholder="Busca por placa" type="text" style="text-transform: uppercase">
+		{{ csrf_field() }}
+		<span class="input-group-btn">
+			<button id="btn_busca" class="btn btn-default" type="button">Buscar!</button>
+		</span>
+	</div>
+</div>
+
+{{-- /Busca --}}
+
+<div class="nav navbar-nav btn-novo-carro">
+	<div class="input-group">
+		<a href="{{ url('/carros/create') }}" class="btn btn-info">Cadastrar Carro</a>
+	</div>
+</div>
+
+@endsection
+
+{{-- Conteúdo Principal da Página --}}
+
 @section('conteudo')
 
 	<div class="row vazio">

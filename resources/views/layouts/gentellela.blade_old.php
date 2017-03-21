@@ -7,12 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentellela | 
-      @section('title')
-
-
-      @show
-    </title>
+    <title>Mecânica</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -45,12 +40,12 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentellela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-car"></i> <span>Mecânica</span></a>
             </div>
 
             <div class="clearfix"></div>
 
-           <!-- menu profile quick info -->
+            <!-- menu profile quick info -->
             <div class="profile">
               <div class="profile_info">
                 <span>Bem-vindo,</span>
@@ -60,15 +55,13 @@
             </div>
             <!-- /menu profile quick info -->
 
-            <br />
-
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
                   
                   <li>
-                    <a href="{{ url('/') }}">
+                    <a>
                       <i class="fa fa-home"></i>Home
                     </a>
                   </li>
@@ -82,7 +75,7 @@
 
                     <ul class="nav child_menu">
                       <li><a href="form.html">Lista de Carros</a></li>
-                      <li><a href="{{ url('/carros/create') }}">Cadastrar Carro</a></li>
+                      <li><a href="form_advanced.html">Cadastrar Carro</a></li>
                     </ul>
 
                   </li>
@@ -141,7 +134,7 @@
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
-              
+
               @section('menu-superior')
 
               @show
@@ -152,50 +145,27 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>
-                  @section('header-h1')
 
-                  @show
-                 </h3>
+          <div class="right_col" role="main" style="min-height: 930px">
+
+            <div class="">
+
+              <div class="row col-md-12 col-sm-12 col-xs-12">
+                
+                <img src="/img/gears.gif" id="img-loading" alt="">
+            
+                @yield('conteudo')              
+
               </div>
 
-              {{-- <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input id="busca" type="text" class="form-control" placeholder="Placa ou Proprietário">
-                    {{ csrf_field() }}
-                    <span class="input-group-btn">
-                      <button id="btn_busca" class="btn btn-default" type="button">Ir!</button>
-                    </span>
-                  </div>
-                </div>
-              </div> --}}
             </div>
 
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                {{-- <div class="x_panel home"> --}}
-                  {{-- <div class="x_content"> --}}
-                      @yield('conteudo')
-                  {{-- </div> --}}
-                {{-- </div> --}}
-              </div>
-            </div>
           </div>
-        </div>
+
         <!-- /page content -->
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Desenvolvido por <a href="mailto:filipemolina@live.com">Filipe Molina</a>
-          </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
@@ -299,16 +269,20 @@
     <script src="{{ asset('vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
     <script src="{{ asset('vendors/nprogress/nprogress.js') }}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{{ asset('vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+    <!-- iCheck -->
+    <script src="{{ asset('vendors/iCheck/icheck.min.js') }}"></script>
     {{-- Input Mask --}}
     <script src="{{ asset('vendors/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
-    
+
     <!-- Custom Theme Scripts -->
-    <script src="{{ asset('js/custom.min.js') }}"></script>
+    <script src="{{asset('js/custom.min.js') }}"></script>
 
     {{-- HandleBars --}}
     <script type="text/javascript" src="/vendors/Handlebars/handlebars-latest.js"></script>
 
-    {{-- Scripts Customizados --}}
-    <script src="{{ asset('js/scripts.js') }}"></script>    
+    {{-- Scripts Personalizados --}}
+    <script src="/js/scripts.js"></script>
   </body>
 </html>

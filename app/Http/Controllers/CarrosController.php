@@ -2,10 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Carro;
 use Illuminate\Http\Request;
 
 class CarrosController extends Controller
 {
+    // Mensagens de erro personalizadas
+
+    private $mensagens = [
+
+        'required' => 'O campo :attribute é obrigatório.',
+        'unique'   => 'O campo :attribute já existe no banco de dados.',
+        'size'      => 'O campo :attribute deve ter exatamente 8 caracteres'
+
+    ];
 
     // Construtor
 
@@ -35,7 +45,7 @@ class CarrosController extends Controller
      */
     public function create()
     {
-        //
+        return view('carros.create');
     }
 
     /**
@@ -46,7 +56,22 @@ class CarrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validar os dados
+
+        $this->validate($request, [
+
+            'placa' => 'required|unique:carros|size:8',
+            'proprietario' => 'required'
+
+        ], $this->mensagens);
+
+        // Criar um novo carro
+
+        $carro = new Carro($request->all());
+
+        $carro->save();
+
+        echo json_encode($carro->toJson());
     }
 
     /**

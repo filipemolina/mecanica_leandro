@@ -2,16 +2,13 @@
 
 namespace App;
 
-use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Carro extends Model
 {
 
-	// Trait para realizar a busca via Scout
-
-	use Searchable;
-
+	protected $fillable = ['placa', 'modelo', 'cor', 'proprietario'];
+	
     // Relacionamento com os atendimentos
 
     public function atendimentos()

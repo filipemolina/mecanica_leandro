@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Atendimento;
 use Illuminate\Http\Request;
 
 class AtendimentosController extends Controller
 {
+
+    protected $mensagens = [
+        'required' => 'O campo :attribute é obrigatório'
+    ];
 
     // Construtor
 
@@ -42,7 +47,27 @@ class AtendimentosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validação
+
+        $this->validate($request, [
+            'descricao' => 'required',
+            'carro_id' => 'required'
+        ], $this->mensagens);
+
+        // Verificar se o valor está presente
+
+        if(!$request->valor)
+            $request->merge(['valor' => 0]);
+
+        // Criar um novo atendimento
+
+        $atendimento = new Atendimento($request->all());
+        $atendimento->save();
+
+        // Retornar sem nenhum erro
+
+        echo json_encode([ 0 => 'sucesso']);
+        
     }
 
     /**
